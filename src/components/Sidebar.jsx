@@ -60,12 +60,15 @@ const Sidebar = () => {
                     className='w-full px-2 py-8'
                 ></img>
             </NavLink>
-            <nav className='w-full text-black flex flex-col px-4 justify-center h-fit'>
+            <nav className='w-full text-black flex flex-col px-4 justify-center h-fit items-center'>
+                <h1 className='text-2xl font-semibold text-black border-solid border-b-2 border-black w-11/12 mb-2 text-center'>
+                    Menu
+                </h1>
                 {routes.map((route, index) => (
                     <NavLink
                         key={index}
                         to={route.to}
-                        className='mb-3 px-4 py-1 hover:text-hover rounded-xl flex justify-start items-center'
+                        className='mb-3 px-4 py-1 hover:text-hover rounded-md w-full flex justify-start items-center bg-third/20'
                         style={active === route.name ? activeStyle : {}}
                     >
                         <div className='mr-2 text-2xl'>{route.icon}</div>
@@ -75,7 +78,10 @@ const Sidebar = () => {
                     </NavLink>
                 ))}
             </nav>
-            <div className='w-full p-4'>
+            <div className='w-full text-black flex flex-col px-4 mt-8 justify-center h-fit items-center'>
+                <h1 className='text-2xl font-semibold text-black border-solid border-b-2 border-black w-11/12 mb-2 text-center'>
+                    Notifications
+                </h1>
                 <Notifications />
             </div>
 

@@ -24,12 +24,6 @@ export const Notifications = () => {
             timestamp: '09:03',
         },
         {
-            title: 'Suppl.',
-            color: 'blue',
-            message: 'Supplier PapaNick has new products',
-            timestamp: '08:45',
-        },
-        {
             title: 'Empl.',
             color: 'pink',
             message: 'Employee Giannis checked in',

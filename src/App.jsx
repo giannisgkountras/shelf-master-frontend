@@ -1,11 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import ProductPage from './pages/ProductPage'
-import WarehousePage from './pages/WarehousePage'
-import CustomerPage from './pages/CustomerPage'
-import SupplierPage from './pages/SupplierPage'
-import EmployeePage from './pages/EmployeePage'
-import Sidebar from './components/Sidebar'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import ProductPage from './pages/ProductPage';
+import WarehousePage from './pages/WarehousePage';
+import CustomerPage from './pages/CustomerPage';
+import SupplierPage from './pages/SupplierPage';
+import EmployeePage from './pages/EmployeePage';
+import Sidebar from './components/Sidebar';
 
 function App() {
     return (
@@ -23,7 +23,7 @@ function App() {
                 </Routes>
             </div>
         </Router>
-    )
+    );
 }
 
-export default App
+export default App;

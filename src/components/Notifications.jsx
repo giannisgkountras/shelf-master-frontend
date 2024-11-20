@@ -1,7 +1,7 @@
-import React from 'react'
-import Badge from './Badge'
-import { MdOutlineExpandMore } from 'react-icons/md'
-import { IoMdNotifications } from 'react-icons/io'
+import React from 'react';
+import Badge from './Badge';
+import { MdOutlineExpandMore } from 'react-icons/md';
+import { IoMdNotifications } from 'react-icons/io';
 
 export const Notifications = () => {
     const notifications = [
@@ -29,7 +29,7 @@ export const Notifications = () => {
             message: 'Employee Giannis checked in',
             timestamp: '07:49',
         },
-    ]
+    ];
     return (
         <div className='w-full h-fit flex flex-col justify-start items-start'>
             {notifications.map((notification, index) => (
@@ -54,5 +54,5 @@ export const Notifications = () => {
                 More <MdOutlineExpandMore className='text-xl' />
             </button>
         </div>
-    )
-}
+    );
+};

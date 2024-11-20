@@ -6,10 +6,10 @@ const Badge = ({ color = 'gray', text }) => {
         blue: 'ring-blue-700/10 bg-blue-700/20',
         pink: 'ring-pink-400 bg-pink-100',
         gray: 'ring-gray-500/10', // default case
-    }
+    };
 
     // Get the appropriate ring color class or fall back to default
-    const ringClass = ringColors[color] || ringColors.gray
+    const ringClass = ringColors[color] || ringColors.gray;
 
     return (
         <div
@@ -17,7 +17,7 @@ const Badge = ({ color = 'gray', text }) => {
         >
             {text}
         </div>
-    )
-}
+    );
+};
 
-export default Badge
+export default Badge;

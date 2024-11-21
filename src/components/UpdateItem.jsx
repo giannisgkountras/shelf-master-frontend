@@ -24,7 +24,7 @@ const UpdateItem = ({ entity, category, title }) => {
                     {category.map((item, index) => (
                         <div
                             key={index}
-                            className='flex flex-col justify-center items-center w-full h-16 my-2'
+                            className='flex flex-col justify-center items-center w-full h-16 my-1'
                         >
                             <label className='font-semibold text-lg text-left w-3/4'>
                                 {listColumnsRename[item]}

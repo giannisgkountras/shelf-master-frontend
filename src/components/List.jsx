@@ -70,8 +70,12 @@ const List = ({ data, columns, rowsPerPage, title, selected, setSelected }) => {
                     <div
                         key={index}
                         className={`flex justify-evenly items-center w-full h-10 hover:cursor-pointer hover:bg-secondary/40 ${
-                            index % 2 === 0 ? 'bg-white' : 'bg-third/20'
-                        } ${selected?.id === item?.id ? 'bg-secondary/40' : ''}`}
+                            selected?.id === item.id
+                                ? 'bg-secondary/40'
+                                : index % 2 === 0
+                                  ? 'bg-white'
+                                  : 'bg-third/20'
+                        }`}
                         onClick={() => setSelected(item)}
                     >
                         {columns.map((col, colIndex) => (

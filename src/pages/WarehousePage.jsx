@@ -1,50 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import warehouseApi from '../api/warehouse';
 import Loading from '../components/Loading';
+import List from '../components/List';
 
 const WarehousePage = () => {
     const [warehouses, setWarehouses] = useState([]);
     const [refresh, setRefresh] = useState(false);
-
-    const createWarehouse = () => {
-        warehouseApi.create({
-            capacity: 100,
-            street: '1234 Main St',
-            zip: '12345',
-        });
-        setRefresh(!refresh);
-    };
-    const updateWarehouse = () => {
-        warehouseApi.update(5, {
-            capacity: 200,
-            street: '1234 Main St',
-            zip: '12345',
-        });
-        setRefresh(!refresh);
-    };
-    const deleteWarehouse = () => {
-        warehouseApi.delete(1);
-        setRefresh(!refresh);
-    };
+    const columns = ['capacity', 'street', 'zip'];
 
     useEffect(() => {
         warehouseApi.getAll().then((response) => {
             setWarehouses(response);
+            console.log(response);
         });
     }, [refresh]);
 
     return (
-        <div className='w-full h-full'>
-            {warehouses.length === 0 && <Loading />}
-            {warehouses &&
-                warehouses.map((warehouse, index) => (
-                    <div key={index} className='bg-third/20 w-20 m-2'>
-                        <h2>{warehouse.capacity}</h2>
-                        <h2>{warehouse.street}</h2>
-                        <h2>{warehouse.zip}</h2>
-                    </div>
-                ))}
-            <button className='bg-primary' onClick={createWarehouse}>
+        <div className='w-full h-full flex justify-center items-center'>
+            <List
+                data={warehouses}
+                columns={columns}
+                rowsPerPage={10}
+                title={'Details of all Warehouses'}
+            />
+            {/* <button className='bg-primary' onClick={createWarehouse}>
                 Create Warehouse
             </button>
             <button
@@ -55,7 +34,7 @@ const WarehousePage = () => {
             </button>
             <button className='bg-error' onClick={deleteWarehouse}>
                 Delete Warehouse
-            </button>
+            </button> */}
         </div>
     );
 };

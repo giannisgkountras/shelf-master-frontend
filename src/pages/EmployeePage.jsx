@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import employeeApi from '../api/employee';
 import Loading from '../components/Loading';
+import List from '../components/List';
 
 const EmployeePage = () => {
     const [employees, setEmployees] = useState([]);
+    const columns = ['fullName', 'email', 'role', 'warehouseID'];
     useEffect(() => {
         employeeApi.getAll().then((response) => {
             setEmployees(response);
@@ -11,18 +13,13 @@ const EmployeePage = () => {
         });
     }, []);
     return (
-        <div className='w-full h-full'>
-            {employees.length === 0 && <Loading />}
-            {employees &&
-                employees.map((employee, index) => (
-                    <div key={index} className='bg-third/20 w-fit m-2'>
-                        <h2>{employee.fullName}</h2>
-                        <h2>{employee.email}</h2>
-                        <h2>{employee.role}</h2>
-                        <h2>WarehouseID: {employee.warehouseID}</h2>
-                        <h2>{employee.zip}</h2>
-                    </div>
-                ))}
+        <div className='w-full h-full flex justify-center items-center'>
+            <List
+                data={employees}
+                columns={columns}
+                rowsPerPage={10}
+                title={'Details of all Employees'}
+            />
         </div>
     );
 };

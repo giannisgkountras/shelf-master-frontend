@@ -78,7 +78,7 @@ const Sidebar = () => {
                     </NavLink>
                 ))}
             </nav>
-            <div className='w-full text-black flex flex-col px-4 justify-center h-fit items-center'>
+            <div className='w-full text-black flex flex-col px-4 justify-center h-2/5 items-center'>
                 <h1 className='text-2xl font-semibold text-black border-solid border-b-2 border-black w-11/12 mb-2 text-center'>
                     Notifications
                 </h1>

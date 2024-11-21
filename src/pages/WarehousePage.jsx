@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import warehouseApi from '../api/warehouse';
-import Loading from '../components/Loading';
 import List from '../components/List';
+import UpdateItem from '../components/UpdateItem';
 
 const WarehousePage = () => {
     const [warehouses, setWarehouses] = useState([]);
+    const [selectedWarehouse, setSelectedWarehouse] = useState(null);
+
     const [refresh, setRefresh] = useState(false);
     const columns = ['capacity', 'street', 'zip'];
 
@@ -16,25 +18,20 @@ const WarehousePage = () => {
     }, [refresh]);
 
     return (
-        <div className='w-full h-full flex justify-center items-center'>
+        <div className='w-full h-full flex justify-evenly items-center'>
             <List
                 data={warehouses}
                 columns={columns}
                 rowsPerPage={10}
                 title={'Details of all Warehouses'}
+                selected={selectedWarehouse}
+                setSelected={setSelectedWarehouse}
             />
-            {/* <button className='bg-primary' onClick={createWarehouse}>
-                Create Warehouse
-            </button>
-            <button
-                className='bg-secondary text-black'
-                onClick={updateWarehouse}
-            >
-                Update Warehouse
-            </button>
-            <button className='bg-error' onClick={deleteWarehouse}>
-                Delete Warehouse
-            </button> */}
+            <UpdateItem
+                category={columns}
+                entity={selectedWarehouse}
+                title={'Edit Warehouse'}
+            />
         </div>
     );
 };

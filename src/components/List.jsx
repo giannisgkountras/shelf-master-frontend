@@ -4,7 +4,7 @@ import { IoPersonAdd } from 'react-icons/io5';
 import Loading from './Loading';
 import listColumnsRename from '../utils/listColumnsRename';
 
-const List = ({ data, columns, rowsPerPage, title }) => {
+const List = ({ data, columns, rowsPerPage, title, selected, setSelected }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -54,7 +54,7 @@ const List = ({ data, columns, rowsPerPage, title }) => {
             </div>
             <div className='flex justify-evenly items-center w-full border-b border-primary/20 h-10'>
                 {columns.map((col, index) => (
-                    <p className='text-center w-full' key={index}>
+                    <p className='text-center w-full font-semibold' key={index}>
                         {listColumnsRename[col]}
                     </p>
                 ))}
@@ -65,13 +65,14 @@ const List = ({ data, columns, rowsPerPage, title }) => {
                 </div>
             )}
             {data.length === 0 && <Loading />}
-            <div className='flex flex-col w-full h-full min-h-56 justify-start items-center'>
+            <div className='flex flex-col w-full h-full min-h-[400px] justify-start items-center'>
                 {currentData.map((item, index) => (
                     <div
                         key={index}
-                        className={`flex justify-evenly items-center w-full h-10 hover:cursor-pointe ${
+                        className={`flex justify-evenly items-center w-full h-10 hover:cursor-pointer hover:bg-secondary/40 ${
                             index % 2 === 0 ? 'bg-white' : 'bg-third/20'
-                        }`}
+                        } ${selected?.id === item?.id ? 'bg-secondary/40' : ''}`}
+                        onClick={() => setSelected(item)}
                     >
                         {columns.map((col, colIndex) => (
                             <p className='w-full text-center' key={colIndex}>

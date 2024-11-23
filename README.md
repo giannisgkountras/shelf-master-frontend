@@ -6,12 +6,20 @@ This application provides a basic structure with pages for managing products, wa
 
 ## Installation
 
-To get started, clone the repository and install the dependencies:
+To get started
+
+1. Clone the repository and install the dependencies:
 
 ```bash
 git clone <repository-url>
 cd project-directory
 npm install
+```
+
+2. Create an env file containing the following
+
+```env
+VITE_API_BASE_URL=your-api-url
 ```
 
 ## Usage

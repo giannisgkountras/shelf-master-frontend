@@ -13,6 +13,7 @@ function App() {
             <div className='flex h-screen w-screen bg-background'>
                 {/* Sidebar or Header can go here */}
                 <Sidebar />
+
                 <Routes>
                     <Route path='/' element={<HomePage />} />
                     <Route path='/products' element={<ProductPage />} />

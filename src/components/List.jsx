@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
 import { IoIosSearch } from 'react-icons/io';
-import { IoPersonAdd } from 'react-icons/io5';
+import { MdAddCircle } from 'react-icons/md';
 import Loading from './Loading';
 import listColumnsRename from '../utils/listColumnsRename';
 
-const List = ({ data, columns, rowsPerPage, title, selected, setSelected }) => {
+const List = ({
+    data,
+    columns,
+    rowsPerPage,
+    title,
+    selected,
+    setSelected,
+    add,
+    setAddNew,
+}) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -38,19 +47,27 @@ const List = ({ data, columns, rowsPerPage, title, selected, setSelected }) => {
     return (
         <div className='flex flex-col justify-center  items-center w-3/5 shadow-2xl rounded-xl bg-[#fff]'>
             <div className='flex justify-between items-center w-11/12 h-16'>
-                <h1 className='font-semibold text-2xl w-full text-center'>
+                <h1 className='font-semibold text-2xl w-fit text-center'>
                     {title}
                 </h1>
+
                 <div className='flex justify-center items-center bg-third/20 w-fit p-1 rounded-full'>
                     <IoIosSearch className='text-gray-500 text-xl mr-2 ml-1' />
                     <input
                         type='text'
                         placeholder='Search'
-                        className=' focus:outline-none bg-transparent placeholder:text-gray-500'
+                        className=' focus:outline-none bg-transparent placeholder:text-gray-500 h-8'
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     ></input>
                 </div>
+                <button
+                    className='bg-primary w-fit text-nowrap flex justify-center items-center mr-2 h-10 rounded-full hover:bg-primary/80'
+                    onClick={() => setAddNew(true)}
+                >
+                    <MdAddCircle className='text-xl mr-2' />
+                    Add new {add}
+                </button>
             </div>
             <div className='flex justify-evenly items-center w-full border-b border-primary/20 h-10'>
                 {columns.map((col, index) => (
@@ -76,7 +93,10 @@ const List = ({ data, columns, rowsPerPage, title, selected, setSelected }) => {
                                   ? 'bg-white'
                                   : 'bg-third/20'
                         }`}
-                        onClick={() => setSelected(item)}
+                        onClick={() => {
+                            setSelected(item);
+                            setAddNew(false);
+                        }}
                     >
                         {columns.map((col, colIndex) => (
                             <p className='w-full text-center' key={colIndex}>

@@ -9,14 +9,14 @@ const rootApi = ky.extend({
 });
 
 const api = {
-    get: (path, searchParams) =>
-        rootApi
+    get: async (path, searchParams) =>
+        await rootApi
             .get(path, { searchParams: queryString.stringify(searchParams) })
             .json(),
-    post: (path, json) => rootApi.post(path, { json }).json(),
-    put: (path, json) => rootApi.put(path, { json }).json(),
-    patch: (path, json) => rootApi.patch(path, { json }).json(),
-    delete: (path, json) => rootApi.delete(path, { json }).json(),
+    post: async (path, json) => await rootApi.post(path, { json }).json(),
+    put: async (path, json) => await rootApi.put(path, { json }).json(),
+    patch: async (path, json) => await rootApi.patch(path, { json }).json(),
+    delete: async (path, json) => await rootApi.delete(path, { json }).json(),
 };
 
 export default api;

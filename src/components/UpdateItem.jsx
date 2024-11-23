@@ -1,9 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import listColumnsRename from '../utils/listColumnsRename';
 import clark from '../assets/clark.png';
-const UpdateItem = ({ entity, category, title }) => {
+import Loading from './Loading';
+const UpdateItem = ({
+    entity,
+    category,
+    title,
+    updateItem,
+    deleteItem,
+    setRefresh,
+    setAlertType,
+    setAlertMessage,
+}) => {
     const [formData, setFormData] = useState({});
-
+    const [saveLoading, setSaveLoading] = useState(false);
+    const [deleteLoading, setDeleteLoading] = useState(false);
     useEffect(() => {
         setFormData(entity || {});
     }, [entity]);
@@ -14,10 +25,52 @@ const UpdateItem = ({ entity, category, title }) => {
             [key]: value,
         }));
     };
+
+    const handleUpdateItem = (e) => {
+        e.preventDefault();
+        setSaveLoading(true);
+        const { id, ...rest } = formData;
+        updateItem(id, rest);
+        setTimeout(() => {
+            setSaveLoading(false);
+            setRefresh((prev) => !prev);
+            setAlertType('success');
+            setAlertMessage('Changes saved successfully!');
+        }, 500);
+        setTimeout(() => {
+            setAlertType('');
+            setAlertMessage('');
+        }, 3000);
+    };
+
+    const handleDeleteItem = (e) => {
+        e.preventDefault();
+        setDeleteLoading(true);
+        deleteItem(formData.id);
+        setTimeout(() => {
+            setDeleteLoading(false);
+            setRefresh((prev) => !prev);
+            setAlertType('success');
+            setAlertMessage('Changes saved successfully!');
+        }, 500);
+        setTimeout(() => {
+            setAlertType('');
+            setAlertMessage('');
+        }, 3000);
+    };
+
+    const handleCancelChanges = (e) => {
+        e.preventDefault();
+        setFormData(entity);
+        setRefresh((prev) => !prev);
+    };
     return (
-        <div className='bg-[#fff] w-1/5 h-[570px] shadow-2xl rounded-xl flex justify-center items-center flex-col'>
+        <div className='bg-[#fff] w-1/5 min-h-[570px] h-fit shadow-2xl rounded-xl flex justify-center items-center flex-col'>
             {entity !== null && (
-                <form className='flex mt-4 justify-start flex-col items-center w-full h-full'>
+                <form
+                    className='flex mt-4 justify-start flex-col items-center w-full h-full'
+                    onSubmit={handleUpdateItem}
+                >
                     <h1 className='text-2xl border-b-2 border-black w-3/4 text-center'>
                         {title}
                     </h1>
@@ -39,14 +92,24 @@ const UpdateItem = ({ entity, category, title }) => {
                             ></input>
                         </div>
                     ))}
-                    <button className='bg-primary w-3/4 mt-2'>
-                        Save Changes
+                    <button
+                        className='bg-primary w-3/4 mt-2 h-12 flex justify-center items-center'
+                        type='submit'
+                    >
+                        {saveLoading ? <Loading /> : 'Save Changes'}
                     </button>
-                    <button className='bg-secondary w-3/4 mt-2 text-black'>
+                    <button
+                        className='bg-secondary w-3/4 mt-2 text-black h-12'
+                        onClick={handleCancelChanges}
+                        type='button'
+                    >
                         Cancel Changes
                     </button>
-                    <button className='bg-error w-3/4 mt-2 '>
-                        Delete Item
+                    <button
+                        className='bg-error w-3/4 my-2 h-12 flex justify-center items-center'
+                        type='button'
+                    >
+                        {deleteLoading ? <Loading /> : 'Delete Item'}
                     </button>
                 </form>
             )}

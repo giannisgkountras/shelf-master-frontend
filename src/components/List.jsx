@@ -3,7 +3,7 @@ import { IoIosSearch } from 'react-icons/io';
 import { MdAddCircle } from 'react-icons/md';
 import Loading from './Loading';
 import listColumnsRename from '../utils/listColumnsRename';
-
+import { FaSortUp, FaSortDown } from 'react-icons/fa';
 const List = ({
     data,
     columns,
@@ -16,6 +16,10 @@ const List = ({
 }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
+    const [sortConfig, setSortConfig] = useState({
+        key: null,
+        direction: 'asc',
+    });
 
     const totalPages = Math.ceil(data.length / rowsPerPage);
 
@@ -29,7 +33,24 @@ const List = ({
         )
     );
 
-    const currentData = filteredData.slice(startIndex, endIndex);
+    const sortedData = [...filteredData].sort((a, b) => {
+        if (!sortConfig.key) return 0;
+        const aValue = a[sortConfig.key];
+        const bValue = b[sortConfig.key];
+        if (sortConfig.key === 'price') {
+            return sortConfig.direction === 'asc'
+                ? aValue - bValue
+                : bValue - aValue;
+        }
+        if (aValue < bValue) return sortConfig.direction === 'asc' ? -1 : 1;
+        if (aValue > bValue) return sortConfig.direction === 'asc' ? 1 : -1;
+
+        return 0;
+    });
+
+    const currentData = sortedData.slice(startIndex, endIndex);
+
+    // const currentData = filteredData.slice(startIndex, endIndex);
 
     // Handlers for pagination
     const goToNextPage = () => {
@@ -71,8 +92,29 @@ const List = ({
             </div>
             <div className='flex justify-evenly items-center w-full border-b border-primary/20 h-10'>
                 {columns.map((col, index) => (
-                    <p className='text-center w-full font-semibold' key={index}>
-                        {listColumnsRename[col]}
+                    <p
+                        key={index}
+                        className='text-center w-full font-semibold cursor-pointer flex justify-center items-center'
+                        onClick={() =>
+                            setSortConfig((prev) => ({
+                                key: col,
+                                direction:
+                                    prev.key === col && prev.direction === 'asc'
+                                        ? 'desc'
+                                        : 'asc',
+                            }))
+                        }
+                    >
+                        {listColumnsRename[col]}{' '}
+                        {sortConfig.key === col ? (
+                            sortConfig.direction === 'asc' ? (
+                                <FaSortUp className='text-xl mt-2' />
+                            ) : (
+                                <FaSortDown className='text-xl mb-2' />
+                            )
+                        ) : (
+                            ''
+                        )}
                     </p>
                 ))}
             </div>
@@ -86,7 +128,7 @@ const List = ({
                 {currentData.map((item, index) => (
                     <div
                         key={index}
-                        className={`flex justify-evenly items-center w-full h-10 hover:cursor-pointer hover:bg-secondary/40 ${
+                        className={`flex justify-evenly items-center w-full min-h-10 h-fit hover:cursor-pointer hover:bg-secondary/40 ${
                             selected?.id === item.id
                                 ? 'bg-secondary/40'
                                 : index % 2 === 0

@@ -13,6 +13,12 @@ const listColumnsRename = {
 
     // for warehouse list
     capacity: 'Capacity',
+
+    // for product list
+    manufacturer: 'Manufacturer',
+    description: 'Description',
+    price: 'Price',
+    product_category: 'Category',
 };
 
 export default listColumnsRename;

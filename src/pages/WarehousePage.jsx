@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import warehouseApi from '../api/warehouse';
 import GenericViewUpdate from '../components/GenericViewUpdate';
 

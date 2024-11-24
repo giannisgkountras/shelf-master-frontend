@@ -8,7 +8,7 @@ export default {
                 secondary: '#FFE66D',
                 third: '#6CA6C1',
                 hover: '#626262',
-                background: '#F7FFF7',
+                background: '#faf7ff',
                 black: '#343434',
                 success: '#87bc45',
                 error: '#ea5545',

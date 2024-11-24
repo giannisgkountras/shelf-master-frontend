@@ -84,7 +84,10 @@ const List = ({
                 </div>
                 <button
                     className='bg-primary w-fit text-nowrap flex justify-center items-center mr-2 h-10 rounded-full hover:bg-primary/80'
-                    onClick={() => setAddNew(true)}
+                    onClick={() => {
+                        setAddNew(true);
+                        setSelected(null);
+                    }}
                 >
                     <MdAddCircle className='text-xl mr-2' />
                     Add new {add}

@@ -10,15 +10,14 @@ import {
     Legend,
     ResponsiveContainer,
 } from 'recharts';
-import data from '../data/BarData';
 
-const BarGraph = () => {
+const BarGraph = ({ title, data, warehouse = false }) => {
     return (
-        <div className='w-5/12 h-1/3 bg-[#fff] shadow-2xl flex justify-evenly items-center flex-col rounded-xl'>
-            <h1 className='text-black text-2xl font-semibold mt-2'>
-                Weekly Sales
+        <div className='w-5/12 h-2/5 bg-[#fff] shadow-2xl flex justify-evenly items-center flex-col rounded-xl'>
+            <h1 className='text-black text-2xl h-10 font-semibold mt-2'>
+                {title}
             </h1>
-            <ResponsiveContainer width='100%' height='100%'>
+            <ResponsiveContainer width='100%' height='90%'>
                 <BarChart
                     data={data}
                     margin={{
@@ -31,7 +30,17 @@ const BarGraph = () => {
                     <defs>
                         <linearGradient id='color' x1='0' y1='0' x2='0' y2='1'>
                             <stop offset='5%' stopColor='#2F3061' />
-                            <stop offset='95%' stopColor='#9480FA' />
+                            <stop offset='95%' stopColor='#4c4d9b' />
+                        </linearGradient>
+                        <linearGradient
+                            id='warehouseColor'
+                            x1='0'
+                            y1='0'
+                            x2='0'
+                            y2='1'
+                        >
+                            <stop offset='0%' stopColor='#27aeef' />
+                            <stop offset='100%' stopColor='#1f84b7' />
                         </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray='3 3' />
@@ -39,7 +48,13 @@ const BarGraph = () => {
                     <YAxis />
                     <Tooltip />
                     {/* <Legend /> */}
-                    <Bar dataKey='amount' fill={'url(#color)'} radius={5} />
+                    <Bar
+                        dataKey='amount'
+                        fill={
+                            warehouse ? 'url(#warehouseColor)' : 'url(#color)'
+                        }
+                        radius={[5, 5, 0, 0]}
+                    />
                 </BarChart>
             </ResponsiveContainer>
         </div>

@@ -24,7 +24,7 @@ const SalesCard = () => {
     const newProducts = 95;
 
     return (
-        <div className='w-5/12 h-1/3 bg-[#fff] shadow-2xl flex justify-evenly items-center flex-col rounded-xl'>
+        <div className='w-5/12 h-2/5 bg-[#fff] shadow-2xl flex justify-evenly items-center flex-col rounded-xl'>
             <div className='flex justify-between items-center w-11/12'>
                 <div className='flex flex-col justify-center items-start'>
                     <p className='text-2xl font-semibold'>Today's Trend</p>
@@ -39,7 +39,7 @@ const SalesCard = () => {
                 </p>
             </div>
             <div className='w-11/12 h-1/2 flex justify-evenly items-center'>
-                <div className='flex flex-col w-48 h-full justify-evenly items-center bg-[#f3806a] p-4 rounded-2xl text-white'>
+                <div className='flex flex-col w-48 h-full justify-evenly items-center bg-[#f3806a] p-4 rounded-2xl text-white shadow-xl'>
                     <p className='text-4xl font-bold flex justify-between items-center'>
                         {todaySales} <MdAutoGraph className='text-5xl ml-4' />
                     </p>
@@ -52,7 +52,7 @@ const SalesCard = () => {
                         </p>
                     </div>
                 </div>
-                <div className='flex flex-col w-48 h-full justify-evenly items-center bg-[#c25777] p-4 rounded-2xl text-white'>
+                <div className='flex flex-col w-48 h-full justify-evenly items-center bg-[#c25777] p-4 rounded-2xl text-white shadow-xl'>
                     <p className='text-4xl font-bold w-11/12 flex justify-between items-center'>
                         <p>{totalOrders}</p>{' '}
                         <FaClipboardList className='text-5xl' />
@@ -67,7 +67,7 @@ const SalesCard = () => {
                     </div>
                 </div>
                 <div className='flex flex-col w-48 h-full justify-between items-center rounded-2xl text-white'>
-                    <div className='w-full flex justify-evenly items-center rounded-2xl h-1/2 mb-2 bg-[#518071]'>
+                    <div className='w-full flex justify-evenly items-center rounded-2xl h-1/2 mb-2 bg-[#518071] shadow-xl'>
                         <p className='text-4xl font-bold'>{productsSold}</p>
                         <div className='flex flex-col justify-center items-end'>
                             <p className='text-white '>Products Sold</p>
@@ -76,7 +76,7 @@ const SalesCard = () => {
                             </p>
                         </div>
                     </div>
-                    <div className='w-full flex justify-evenly items-center rounded-2xl h-1/2 mt-2 bg-[#7d4177]'>
+                    <div className='w-full flex justify-evenly items-center rounded-2xl h-1/2 mt-2 bg-[#7d4177] shadow-xl'>
                         <p className='text-4xl font-bold'>{newProducts}</p>
                         <div className='flex flex-col justify-center items-end'>
                             <p className='text-white '>New Products</p>

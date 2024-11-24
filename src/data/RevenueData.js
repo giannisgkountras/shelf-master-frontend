@@ -1,4 +1,4 @@
-const data = [
+const revenueData = [
     {
         name: 'Wed',
         amount: 300,
@@ -37,4 +37,4 @@ const data = [
     },
 ];
 
-export default data;
+export default revenueData;

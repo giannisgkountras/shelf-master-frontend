@@ -52,7 +52,7 @@ const Sidebar = () => {
     };
 
     return (
-        <div className='div w-1/6 min-h-fit h-full flex flex-col justify-evenly items-center shadow-2xl'>
+        <div className='div w-1/5 min-h-fit h-full flex flex-col justify-evenly items-center shadow-2xl'>
             <NavLink to={'/'}>
                 <img
                     src={logo}

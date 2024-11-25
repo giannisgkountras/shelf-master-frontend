@@ -12,8 +12,17 @@ import {
 } from 'recharts';
 
 const BarGraph = ({ title, data, warehouse = false }) => {
+    const colorsForWarehouse = [
+        '#305361',
+        '#437570',
+        '#518071',
+        '#396a6d',
+        '#335f68',
+    ];
     return (
-        <div className='w-5/12 h-2/5 bg-[#fff] shadow-2xl flex justify-evenly items-center flex-col rounded-xl'>
+        <div
+            className={`${warehouse ? 'w-5/12 h-[45%]' : 'w-6/12'} h-2/5 bg-[#fff] shadow-2xl flex justify-evenly items-center flex-col rounded-xl`}
+        >
             <h1 className='text-black text-2xl h-10 font-semibold mt-2'>
                 {title}
             </h1>
@@ -39,8 +48,8 @@ const BarGraph = ({ title, data, warehouse = false }) => {
                             x2='0'
                             y2='1'
                         >
-                            <stop offset='0%' stopColor='#27aeef' />
-                            <stop offset='100%' stopColor='#1f84b7' />
+                            <stop offset='0%' stopColor='#518071' />
+                            <stop offset='100%' stopColor='#3d6055' />
                         </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray='3 3' />

@@ -24,7 +24,7 @@ const SalesCard = () => {
     const newProducts = 95;
 
     return (
-        <div className='w-5/12 h-2/5 bg-[#fff] shadow-2xl flex justify-evenly items-center flex-col rounded-xl'>
+        <div className='w-[48%] h-2/5 bg-[#fff] shadow-2xl flex justify-evenly items-center flex-col rounded-xl'>
             <div className='flex justify-between items-center w-11/12'>
                 <div className='flex flex-col justify-center items-start'>
                     <p className='text-2xl font-semibold'>Today's Trend</p>

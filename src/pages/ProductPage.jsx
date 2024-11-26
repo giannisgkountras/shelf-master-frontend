@@ -11,12 +11,14 @@ const ProductPage = () => {
         'product_category',
     ];
     return (
-        <GenericViewUpdate
-            api={productApi}
-            columns={columns}
-            title='Product'
-            entityName='Product'
-        />
+        <div className='flex w-full h-full justify-center items-center relative overflow-hidden'>
+            <GenericViewUpdate
+                api={productApi}
+                columns={columns}
+                title='Product'
+                entityName='Product'
+            />
+        </div>
     );
 };
 

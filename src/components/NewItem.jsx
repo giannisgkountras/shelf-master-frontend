@@ -47,7 +47,7 @@ const NewItem = ({
         }
     };
     return (
-        <div className='bg-[#fff] w-1/5 min-h-[570px] h-fit shadow-2xl rounded-xl flex justify-center items-center flex-col '>
+        <div className='bg-[#fff] w-[30%] min-h-[570px] h-fit shadow-2xl rounded-xl flex justify-center items-center flex-col '>
             <form
                 className='flex mt-4 justify-start flex-col items-center w-full h-full'
                 onSubmit={handleCreateItem}

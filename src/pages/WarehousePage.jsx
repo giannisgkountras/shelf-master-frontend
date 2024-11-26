@@ -6,6 +6,7 @@ import NewItem from '../components/NewItem';
 import UpdateItem from '../components/UpdateItem';
 import Alert from '../components/Alert';
 import { IoAddCircle } from 'react-icons/io5';
+
 const WarehousePage = () => {
     const [warehouses, setWarehouses] = useState([]);
     const columns = ['capacity', 'street', 'zip'];
@@ -20,7 +21,6 @@ const WarehousePage = () => {
         });
     }, [refresh]);
 
-    console.log(selectedEntity);
     return (
         <div className='w-full h-full flex flex-col justify-center items-center overflow-hidden relative'>
             <div className='font-semibold text-4xl w-10/12 my-4 py-4 flex justify-start items-center'>

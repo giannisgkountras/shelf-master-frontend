@@ -19,7 +19,7 @@ const GenericViewUpdate = ({ api, columns, title, entityName }) => {
     }, [refresh]);
 
     return (
-        <div className='w-full h-full flex justify-evenly items-center relative overflow-hidden'>
+        <div className='w-11/12 h-fit flex justify-between items-center'>
             <List
                 data={entities}
                 columns={columns}

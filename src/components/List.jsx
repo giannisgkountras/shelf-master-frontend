@@ -66,7 +66,7 @@ const List = ({
     };
 
     return (
-        <div className='flex flex-col justify-center  items-center w-3/5 shadow-2xl rounded-xl bg-[#fff]'>
+        <div className='flex flex-col justify-center  items-center w-[65%] shadow-2xl rounded-xl bg-[#fff]'>
             <div className='flex justify-between items-center w-11/12 h-16'>
                 <h1 className='font-semibold text-2xl w-fit text-center'>
                     {title}

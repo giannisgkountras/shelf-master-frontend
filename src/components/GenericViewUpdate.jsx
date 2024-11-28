@@ -20,16 +20,18 @@ const GenericViewUpdate = ({ api, columns, title, entityName }) => {
 
     return (
         <div className='w-11/12 h-fit flex justify-between items-center'>
-            <List
-                data={entities}
-                columns={columns}
-                rowsPerPage={10}
-                title={`Details of all ${entityName}s`}
-                selected={selectedEntity}
-                setSelected={setSelectedEntity}
-                add={entityName}
-                setAddNew={setAddNew}
-            />
+            <div className='flex justify-center items-center w-[65%] h-[540px]'>
+                <List
+                    data={entities}
+                    columns={columns}
+                    rowsPerPage={9}
+                    title={`Details of all ${entityName}s`}
+                    selected={selectedEntity}
+                    setSelected={setSelectedEntity}
+                    add={entityName}
+                    setAddNew={setAddNew}
+                />
+            </div>
             {!addNew && (
                 <UpdateItem
                     category={columns}

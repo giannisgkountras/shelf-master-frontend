@@ -8,7 +8,7 @@ import { MdWork } from 'react-icons/md';
 import { useEffect, useState } from 'react';
 import logo from '../assets/shelfmastertext.png';
 import { Notifications } from './Notifications';
-
+import { FaChartBar } from 'react-icons/fa';
 const Sidebar = () => {
     const [active, setActive] = useState('Dashboard');
     const location = useLocation();
@@ -33,6 +33,9 @@ const Sidebar = () => {
             case '/employees':
                 setActive('Employees');
                 break;
+            case '/operations':
+                setActive('Operations');
+                break;
             default:
                 setActive('None');
         }
@@ -45,6 +48,7 @@ const Sidebar = () => {
         { to: '/customers', name: 'Customers', icon: <HiUsers /> },
         { to: '/suppliers', name: 'Suppliers', icon: <GiWoodenCrate /> },
         { to: '/employees', name: 'Employees', icon: <MdWork /> },
+        { to: '/operations', name: 'Operations', icon: <FaChartBar /> },
     ];
     const activeStyle = {
         color: '#F7F7F7',

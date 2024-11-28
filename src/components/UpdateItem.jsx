@@ -86,10 +86,11 @@ const UpdateItem = ({
     const handleCancelChanges = (e) => {
         e.preventDefault();
         setFormData(entity);
+        setConfirmDelete(false);
         setRefresh((prev) => !prev);
     };
     return (
-        <div className='bg-[#fff] w-[30%] min-h-[570px] h-fit shadow-2xl rounded-xl flex justify-center items-center flex-col '>
+        <div className='bg-[#fff] w-[30%] min-h-[540px] h-full shadow-2xl rounded-xl flex justify-center items-center flex-col'>
             {entity !== null && (
                 <form
                     className='flex mt-4 justify-start flex-col items-center w-full h-full'
@@ -116,51 +117,43 @@ const UpdateItem = ({
                             ></input>
                         </div>
                     ))}
+                    <div className='flex justify-evenly items-center w-3/4'>
+                        <button
+                            className='bg-primary w-1/2 mr-2 mt-2 h-12 flex justify-center items-center'
+                            type='submit'
+                            disabled={saveLoading}
+                        >
+                            {saveLoading ? <Loading /> : 'Save'}
+                        </button>
+
+                        {!confirmDelete && (
+                            <button
+                                className='bg-error w-1/2 ml-2 mt-2 h-12 flex justify-center items-center'
+                                type='button'
+                                onClick={() =>
+                                    setConfirmDelete((prev) => !prev)
+                                }
+                                disabled={deleteLoading}
+                            >
+                                {deleteLoading ? <Loading /> : 'Delete Item'}
+                            </button>
+                        )}
+                        {confirmDelete && (
+                            <button
+                                className='bg-red-600  w-1/2 h-12 mt-2 ml-2 flex justify-center items-center'
+                                onClick={handleDeleteItem}
+                            >
+                                Confirm Delete
+                            </button>
+                        )}
+                    </div>
                     <button
-                        className='bg-primary w-3/4 mt-2 h-12 flex justify-center items-center'
-                        type='submit'
-                        disabled={saveLoading}
-                    >
-                        {saveLoading ? <Loading /> : 'Save Changes'}
-                    </button>
-                    <button
-                        className='bg-secondary w-3/4 mt-2 text-black h-12'
+                        className='bg-secondary w-3/4 mx-2 mt-2 text-black h-12'
                         onClick={handleCancelChanges}
                         type='button'
                     >
-                        Cancel Changes
+                        Cancel
                     </button>
-                    {!confirmDelete && (
-                        <button
-                            className='bg-error w-3/4 my-2 h-12 flex justify-center items-center'
-                            type='button'
-                            onClick={() => setConfirmDelete((prev) => !prev)}
-                            disabled={deleteLoading}
-                        >
-                            {deleteLoading ? <Loading /> : 'Delete Item'}
-                        </button>
-                    )}
-                    {confirmDelete && (
-                        <div className='w-3/4 h-20 flex flex-col justify-center items-center my-2 bg-error/20 rounded-lg p-2'>
-                            <p className='my-1'>Are you sure?</p>
-                            <div className='flex w-full justify-evenly items-center'>
-                                <button
-                                    className='bg-black w-1/2 h-8 ml-2 flex justify-center items-center'
-                                    onClick={() =>
-                                        setConfirmDelete((prev) => !prev)
-                                    }
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    className='bg-error w-1/2 h-8 ml-2 flex justify-center items-center'
-                                    onClick={handleDeleteItem}
-                                >
-                                    Yes
-                                </button>
-                            </div>
-                        </div>
-                    )}
                 </form>
             )}
             {entity === null && (

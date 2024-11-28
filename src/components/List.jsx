@@ -66,8 +66,8 @@ const List = ({
     };
 
     return (
-        <div className='flex flex-col justify-center  items-center w-[65%] shadow-2xl rounded-xl bg-[#fff]'>
-            <div className='flex justify-between items-center w-11/12 h-16'>
+        <div className='flex flex-col justify-center h-full items-center w-full shadow-2xl rounded-xl bg-[#fff]'>
+            <div className='flex justify-between items-center w-11/12 h-fit mt-4 mb-4'>
                 <h1 className='font-semibold text-2xl w-fit text-center'>
                     {title}
                 </h1>
@@ -127,7 +127,7 @@ const List = ({
                 </div>
             )}
             {data.length === 0 && <Loading />}
-            <div className='flex flex-col w-full h-full min-h-[400px] justify-start items-center'>
+            <div className='flex flex-col w-full h-full min-h-[200px] justify-start items-center'>
                 {currentData.map((item, index) => (
                     <div
                         key={index}

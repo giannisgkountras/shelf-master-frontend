@@ -19,6 +19,13 @@ const listColumnsRename = {
     description: 'Description',
     price: 'Price',
     product_category: 'Category',
+
+    //for supplier supplies
+    id: 'ID',
+    timestamp: 'Timestamp',
+    quantity: 'Quantity',
+    supplierID: 'Supplier ID',
+    productID: 'Product ID',
 };
 
 export default listColumnsRename;

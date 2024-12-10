@@ -9,7 +9,7 @@ import { IoAddCircle } from 'react-icons/io5';
 
 const WarehousePage = () => {
     const [warehouses, setWarehouses] = useState([]);
-    const columns = ['capacity', 'street', 'zip'];
+    const columns = ['capacity', 'street', 'zip', 'city'];
     const [addNew, setAddNew] = useState(false);
     const [refresh, setRefresh] = useState(false);
     const [alertType, setAlertType] = useState('');

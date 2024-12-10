@@ -3,7 +3,7 @@ import customerApi from '../api/customer';
 import GenericViewUpdate from '../components/GenericViewUpdate';
 
 const CustomerPage = () => {
-    const columns = ['name', 'email', 'phone', 'street', 'zip'];
+    const columns = ['name', 'email', 'phone', 'street', 'zip', 'city'];
     return (
         <div className='flex w-full h-full justify-center items-center relative overflow-hidden'>
             <GenericViewUpdate

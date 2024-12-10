@@ -10,6 +10,7 @@ const listColumnsRename = {
     phone: 'Phone Number',
     street: 'Street',
     zip: 'Zip Code',
+    city: 'City',
 
     // for warehouse list
     capacity: 'Capacity',

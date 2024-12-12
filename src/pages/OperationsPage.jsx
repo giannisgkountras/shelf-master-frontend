@@ -7,25 +7,30 @@ const OperationsPage = () => {
     const [shouldReload, setShouldReload] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState([]);
     const suppliesColumns = [
-        'id',
+        // 'id',
         'timestamp',
         'quantity',
-        'supplierID',
-        'productID',
+        // 'supplierID',
+        // 'productID',
+        'pruductName',
+        'supplierName',
     ];
     const salesColumns = [
-        'id',
+        // 'id',
         'timestamp',
         'quantity',
-        'customerID',
-        'productID',
+        // 'customerID',
+        'customerName',
+        'pruductName',
+        // 'productID',
     ];
     const warehouseStockColumns = [
-        'id',
+        // 'id',
         'quantity',
         'timestamp',
         'warehouseID',
-        'productID',
+        'pruductName',
+        // 'productID',
     ];
     return (
         <div className='flex w-full h-full justify-evenly items-center relative overflow-hidden flex-wrap'>

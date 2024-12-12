@@ -21,12 +21,15 @@ const listColumnsRename = {
     price: 'Price',
     product_category: 'Category',
 
-    //for supplier supplies
+    //for relations
     id: 'ID',
     timestamp: 'Timestamp',
     quantity: 'Quantity',
     supplierID: 'Supplier ID',
     productID: 'Product ID',
+    pruductName: 'Product Name',
+    supplierName: 'Supplier Name',
+    customerName: 'Customer Name',
 };
 
 export default listColumnsRename;

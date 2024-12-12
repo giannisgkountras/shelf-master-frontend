@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import listColumnsRename from '../utils/listColumnsRename';
+import inputCategoryMap from '../utils/mapColumnInputCategory';
 import clark from '../assets/clark.png';
 import Loading from './Loading';
 const UpdateItem = ({
@@ -108,7 +109,8 @@ const UpdateItem = ({
                                 {listColumnsRename[item]}
                             </label>
                             <input
-                                type='text'
+                                type={inputCategoryMap[item]}
+                                required
                                 className='w-3/4 h-8 bg-third/20 pl-2 rounded-md focus:outline-none focus:bg-third/40'
                                 value={formData[item] || ''}
                                 onChange={(e) =>
@@ -148,7 +150,7 @@ const UpdateItem = ({
                         )}
                     </div>
                     <button
-                        className='bg-secondary w-3/4 mx-2 mt-2 text-black h-12'
+                        className='bg-secondary w-3/4 mx-2 mt-2 text-black h-12 mb-2'
                         onClick={handleCancelChanges}
                         type='button'
                     >

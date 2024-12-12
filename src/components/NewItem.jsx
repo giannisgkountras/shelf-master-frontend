@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import listColumnsRename from '../utils/listColumnsRename';
+import inputCategoryMap from '../utils/mapColumnInputCategory';
 import Loading from './Loading';
 
 const NewItem = ({
@@ -64,7 +65,8 @@ const NewItem = ({
                             {listColumnsRename[item]}
                         </label>
                         <input
-                            type='text'
+                            type={inputCategoryMap[item]}
+                            required
                             className='w-3/4 h-8 bg-third/20 pl-2 rounded-md focus:outline-none focus:bg-third/40'
                             value={formData[item] || ''}
                             onChange={(e) => handleChange(item, e.target.value)}
@@ -79,7 +81,7 @@ const NewItem = ({
                     {createLoading ? <Loading /> : 'Save Changes'}
                 </button>
                 <button
-                    className='bg-secondary w-3/4 mt-2 text-black h-12'
+                    className='bg-secondary w-3/4 mt-2 text-black h-12 mb-2'
                     onClick={() => setAddNew(false)}
                     type='button'
                 >

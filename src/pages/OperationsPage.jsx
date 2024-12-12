@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import OrdersSuppliesStoreList from '../components/OrdersSuppliesStoreList';
 import supplyApi from '../api/supplies';
+import inventoryApi from '../api/inventory';
 import NewItem from '../components/NewItem';
 const OperationsPage = () => {
     const [shouldReload, setShouldReload] = useState(false);
@@ -28,6 +29,7 @@ const OperationsPage = () => {
     ];
     return (
         <div className='flex w-full h-full justify-evenly items-center relative overflow-hidden flex-wrap'>
+            {/* Element for Inventory, Supplies and Sales */}
             <OrdersSuppliesStoreList
                 api={supplyApi}
                 columns={suppliesColumns}
@@ -36,7 +38,7 @@ const OperationsPage = () => {
                 setSelectedCategory={setSelectedCategory}
             />
             <OrdersSuppliesStoreList
-                api={supplyApi}
+                api={inventoryApi}
                 columns={salesColumns}
                 title={'Customer Sales'}
                 shouldReload={shouldReload}
@@ -49,9 +51,7 @@ const OperationsPage = () => {
                 shouldReload={shouldReload}
                 setSelectedCategory={setSelectedCategory}
             />
-            <div className='flex justify-center items-center w-[47%] h-'>
-                Create New Entry
-            </div>
+            <div className='flex justify-center items-center w-[47%] h-'></div>
         </div>
     );
 };

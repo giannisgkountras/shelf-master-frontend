@@ -131,7 +131,7 @@ const List = ({
                 {currentData.map((item, index) => (
                     <div
                         key={index}
-                        className={`flex justify-evenly items-center w-full min-h-10 h-fit hover:cursor-pointer hover:bg-secondary/40 ${
+                        className={`flex justify-center items-center w-full h-10 ... min-h-fit hover:cursor-pointer hover:bg-secondary/40 ${
                             selected?.id === item.id
                                 ? 'bg-secondary/40'
                                 : index % 2 === 0
@@ -144,7 +144,10 @@ const List = ({
                         }}
                     >
                         {columns.map((col, colIndex) => (
-                            <p className='w-full text-center' key={colIndex}>
+                            <p
+                                className='w-full text-start px-2 truncate mx-2'
+                                key={colIndex}
+                            >
                                 {item[col]}
                             </p>
                         ))}

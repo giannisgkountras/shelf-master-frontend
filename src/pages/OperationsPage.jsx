@@ -26,8 +26,8 @@ const OperationsPage = () => {
     ];
     const warehouseStockColumns = [
         // 'id',
-        'quantity',
         'timestamp',
+        'quantity',
         'warehouseID',
         'pruductName',
         // 'productID',

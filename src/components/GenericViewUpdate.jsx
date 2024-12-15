@@ -4,7 +4,7 @@ import UpdateItem from '../components/UpdateItem';
 import Alert from '../components/Alert';
 import NewItem from '../components/NewItem';
 
-const GenericViewUpdate = ({ api, columns, title, entityName }) => {
+const GenericViewUpdate = ({ api, columns, title, entityName, rows = 9 }) => {
     const [entities, setEntities] = useState([]);
     const [selectedEntity, setSelectedEntity] = useState(null);
     const [refresh, setRefresh] = useState(false);
@@ -24,7 +24,7 @@ const GenericViewUpdate = ({ api, columns, title, entityName }) => {
                 <List
                     data={entities}
                     columns={columns}
-                    rowsPerPage={9}
+                    rowsPerPage={rows}
                     title={`Details of all ${entityName}s`}
                     selected={selectedEntity}
                     setSelected={setSelectedEntity}

@@ -145,7 +145,7 @@ const List = ({
                     >
                         {columns.map((col, colIndex) => (
                             <p
-                                className='w-full text-start px-2 truncate mx-2'
+                                className='w-full ${col === `quantity` ? `text-center` : `text-start`} px-2 truncate mx-2'
                                 key={colIndex}
                             >
                                 {item[col]}

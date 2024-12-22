@@ -12,7 +12,7 @@ const OperationsPage = () => {
         'quantity',
         // 'supplierID',
         // 'productID',
-        'pruductName',
+        'productName',
         'supplierName',
     ];
     const salesColumns = [
@@ -21,7 +21,7 @@ const OperationsPage = () => {
         'quantity',
         // 'customerID',
         'customerName',
-        'pruductName',
+        'productName',
         // 'productID',
     ];
     const warehouseStockColumns = [
@@ -29,7 +29,7 @@ const OperationsPage = () => {
         'timestamp',
         'quantity',
         'warehouseID',
-        'pruductName',
+        'productName',
         // 'productID',
     ];
     return (

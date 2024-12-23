@@ -27,7 +27,7 @@ const listColumnsRename = {
     quantity: 'Quantity',
     supplierID: 'Supplier ID',
     productID: 'Product ID',
-    pruductName: 'Product Name',
+    productName: 'Product Name',
     supplierName: 'Supplier Name',
     customerName: 'Customer Name',
 };

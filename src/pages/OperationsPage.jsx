@@ -50,7 +50,7 @@ const OperationsPage = () => {
                 setSelectedCategory={setSelectedCategory}
             />
             <OrdersSuppliesStoreList
-                api={supplyApi}
+                api={inventoryApi}
                 columns={warehouseStockColumns}
                 title={'Warehouse Stock'}
                 shouldReload={shouldReload}

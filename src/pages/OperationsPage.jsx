@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import OrdersSuppliesStoreList from '../components/OrdersSuppliesStoreList';
 import supplyApi from '../api/supplies';
 import inventoryApi from '../api/inventory';
+import salesApi from '../api/sales';
 import NewItem from '../components/NewItem';
 const OperationsPage = () => {
     const [shouldReload, setShouldReload] = useState(false);
@@ -43,7 +44,7 @@ const OperationsPage = () => {
                 setSelectedCategory={setSelectedCategory}
             />
             <OrdersSuppliesStoreList
-                api={inventoryApi}
+                api={salesApi}
                 columns={salesColumns}
                 title={'Customer Sales'}
                 shouldReload={shouldReload}

@@ -1,9 +1,9 @@
 import React from 'react';
 import { PiWarehouseBold } from 'react-icons/pi';
 import { MdOutlineEdit } from 'react-icons/md';
-const WarehouseCard = ({ warehouse, selectedEntity, setSelectedEntity }) => {
+const WarehouseCard = ({ warehouse, selectedEntity, setSelectedEntity, totalQuantityInventory }) => {
     const { id, capacity, street, zip } = warehouse;
-    const availableCapacity = capacity - 80;
+    const availableCapacity = capacity - totalQuantityInventory;
 
     return (
         <div

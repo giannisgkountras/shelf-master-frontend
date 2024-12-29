@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import warehouseApi from '../api/warehouse';
+import availableProductsInWarehouseApi from '../api/availableProductsInWarehouse';
 import GenericViewUpdate from '../components/GenericViewUpdate';
 import WarehouseCard from '../components/WarehouseCard';
 import NewItem from '../components/NewItem';
@@ -9,6 +10,7 @@ import { IoAddCircle } from 'react-icons/io5';
 
 const WarehousePage = () => {
     const [warehouses, setWarehouses] = useState([]);
+    const [totalQuantityInventoryForAllWarehouses, setTotalQuantityInventoryForAllWarehouses] = useState([]);
     const columns = ['capacity', 'street', 'zip', 'city'];
     const [addNew, setAddNew] = useState(false);
     const [refresh, setRefresh] = useState(false);
@@ -16,9 +18,20 @@ const WarehousePage = () => {
     const [alertMessage, setAlertMessage] = useState('');
     const [selectedEntity, setSelectedEntity] = useState(null);
     useEffect(() => {
-        warehouseApi.getAll().then((data) => {
-            setWarehouses(data);
-        });
+        const fetchDataForWarehouses = async () => {
+            const warehousesData = await warehouseApi.getAll();
+            setWarehouses(warehousesData);
+            
+            // Fetch the current total inventory for each warehouse
+            const totalInventories = {};
+            for (const warehouse of warehousesData) {
+                const totalQuantityInventory = await availableProductsInWarehouseApi.getTotalInventory(warehouse.id);
+                totalInventories[warehouse.id] = totalQuantityInventory;
+            }
+            setTotalQuantityInventoryForAllWarehouses(totalInventories);
+        };
+
+        fetchDataForWarehouses();
     }, [refresh]);
 
     return (
@@ -42,6 +55,7 @@ const WarehousePage = () => {
                             key={warehouse.id}
                             selectedEntity={selectedEntity}
                             setSelectedEntity={setSelectedEntity}
+                            totalQuantityInventory={totalQuantityInventoryForAllWarehouses[warehouse.id] || 0}
                         />
                     ))}
                 </div>

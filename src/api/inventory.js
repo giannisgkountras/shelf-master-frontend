@@ -1,13 +1,13 @@
 import api from './index';
 
 const inventoryApi = {
-    // Fetch all supplies
+    // Fetch all inventory records
     getAll: (searchParams) => api.get('inventory/', searchParams),
 
-    // Create a new supply
+    // Create a new inventory record
     create: (data) => api.post('inventory/', data),
 
-    // Delete a supply by ID
+    // Delete an inventory record by ID
     delete: (id) => api.delete(`inventory/${id}`),
 };
 

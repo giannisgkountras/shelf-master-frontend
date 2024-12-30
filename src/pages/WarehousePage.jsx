@@ -10,10 +10,6 @@ import { IoAddCircle } from 'react-icons/io5';
 const WarehousePage = () => {
     const [warehouses, setWarehouses] = useState([]);
     const [availableCapacities, setAvailableCapacities] = useState([]);
-    const [
-        totalQuantityInventoryForAllWarehouses,
-        setTotalQuantityInventoryForAllWarehouses,
-    ] = useState([]);
     const columns = ['capacity', 'street', 'zip', 'city'];
     const [addNew, setAddNew] = useState(false);
     const [refresh, setRefresh] = useState(false);

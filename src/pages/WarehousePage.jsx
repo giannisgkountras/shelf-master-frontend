@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import warehouseApi from '../api/warehouse';
-import availableProductsInWarehouseApi from '../api/availableProductsInWarehouse';
 import GenericViewUpdate from '../components/GenericViewUpdate';
 import WarehouseCard from '../components/WarehouseCard';
 import NewItem from '../components/NewItem';
@@ -10,28 +9,26 @@ import { IoAddCircle } from 'react-icons/io5';
 
 const WarehousePage = () => {
     const [warehouses, setWarehouses] = useState([]);
-    const [totalQuantityInventoryForAllWarehouses, setTotalQuantityInventoryForAllWarehouses] = useState([]);
+    const [availableCapacities, setAvailableCapacities] = useState([]);
+    const [
+        totalQuantityInventoryForAllWarehouses,
+        setTotalQuantityInventoryForAllWarehouses,
+    ] = useState([]);
     const columns = ['capacity', 'street', 'zip', 'city'];
     const [addNew, setAddNew] = useState(false);
     const [refresh, setRefresh] = useState(false);
     const [alertType, setAlertType] = useState('');
     const [alertMessage, setAlertMessage] = useState('');
     const [selectedEntity, setSelectedEntity] = useState(null);
-    useEffect(() => {
-        const fetchDataForWarehouses = async () => {
-            const warehousesData = await warehouseApi.getAll();
-            setWarehouses(warehousesData);
-            
-            // Fetch the current total inventory for each warehouse
-            const totalInventories = {};
-            for (const warehouse of warehousesData) {
-                const totalQuantityInventory = await availableProductsInWarehouseApi.getTotalInventory(warehouse.id);
-                totalInventories[warehouse.id] = totalQuantityInventory;
-            }
-            setTotalQuantityInventoryForAllWarehouses(totalInventories);
-        };
 
-        fetchDataForWarehouses();
+    useEffect(() => {
+        warehouseApi.getAll().then((data) => {
+            setWarehouses(data);
+        });
+        warehouseApi.getAvailableCapacities().then((data) => {
+            console.log(data);
+            setAvailableCapacities(data);
+        });
     }, [refresh]);
 
     return (
@@ -55,7 +52,12 @@ const WarehousePage = () => {
                             key={warehouse.id}
                             selectedEntity={selectedEntity}
                             setSelectedEntity={setSelectedEntity}
-                            totalQuantityInventory={totalQuantityInventoryForAllWarehouses[warehouse.id] || 0}
+                            // Find the available capacity for the warehouse
+                            availableCapacity={
+                                availableCapacities.find(
+                                    (item) => item.warehouseID === warehouse.id
+                                ).available_capacity
+                            }
                         />
                     ))}
                 </div>

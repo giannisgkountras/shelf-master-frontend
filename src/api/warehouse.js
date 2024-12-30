@@ -15,6 +15,11 @@ const warehouseApi = {
 
     // Delete a warehouse by ID
     delete: (id) => api.delete(`warehouses/${id}`),
+
+    getAvailableProductsInWarehouse: (id) => api.get(`current-inventory/${id}`),
+
+    // Fetch available capacities for all warehouses
+    getAvailableCapacities: () => api.get('warehouses/current-capacity'),
 };
 
 export default warehouseApi;

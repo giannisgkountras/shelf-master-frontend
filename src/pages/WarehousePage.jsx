@@ -9,15 +9,21 @@ import { IoAddCircle } from 'react-icons/io5';
 
 const WarehousePage = () => {
     const [warehouses, setWarehouses] = useState([]);
+    const [availableCapacities, setAvailableCapacities] = useState([]);
     const columns = ['capacity', 'street', 'zip', 'city'];
     const [addNew, setAddNew] = useState(false);
     const [refresh, setRefresh] = useState(false);
     const [alertType, setAlertType] = useState('');
     const [alertMessage, setAlertMessage] = useState('');
     const [selectedEntity, setSelectedEntity] = useState(null);
+
     useEffect(() => {
         warehouseApi.getAll().then((data) => {
             setWarehouses(data);
+        });
+        warehouseApi.getAvailableCapacities().then((data) => {
+            console.log(data);
+            setAvailableCapacities(data);
         });
     }, [refresh]);
 
@@ -42,6 +48,12 @@ const WarehousePage = () => {
                             key={warehouse.id}
                             selectedEntity={selectedEntity}
                             setSelectedEntity={setSelectedEntity}
+                            // Find the available capacity for the warehouse
+                            availableCapacity={
+                                availableCapacities.find(
+                                    (item) => item.warehouseID === warehouse.id
+                                ).available_capacity
+                            }
                         />
                     ))}
                 </div>

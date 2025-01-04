@@ -30,6 +30,7 @@ const listColumnsRename = {
     productName: 'Product Name',
     supplierName: 'Supplier Name',
     customerName: 'Customer Name',
+    customerID: 'Customer ID',
 };
 
 export default listColumnsRename;

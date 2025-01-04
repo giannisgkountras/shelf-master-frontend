@@ -7,21 +7,16 @@ const OrdersSuppliesStoreList = ({
     title,
     shouldReload,
     setSelectedCategory,
-    setSelectedOperation,
 }) => {
     const [data, setdata] = useState([]);
     const [addNew, setAddNew] = useState(false);
 
     useEffect(() => {
         setSelectedCategory(columns);
-        if (addNew) {
-            setSelectedOperation(title);
-        }
     }, [addNew]);
 
     useEffect(() => {
         api.getAll().then((response) => {
-            console.log(response);
             setdata(response);
         });
     }, [shouldReload]);
@@ -32,7 +27,7 @@ const OrdersSuppliesStoreList = ({
                 columns={columns}
                 rowsPerPage={6}
                 title={title}
-                setAddNew={setAddNew}
+                showAddNew={false}
             />
         </div>
     );

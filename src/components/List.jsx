@@ -4,6 +4,7 @@ import { MdAddCircle } from 'react-icons/md';
 import Loading from './Loading';
 import listColumnsRename from '../utils/listColumnsRename';
 import { FaSortUp, FaSortDown } from 'react-icons/fa';
+import timestampFormatter from '../utils/timestampFormatter';
 const List = ({
     data,
     columns,
@@ -145,11 +146,20 @@ const List = ({
                     >
                         {columns.map((col, colIndex) => (
                             <p
-                                className={`w-full ${col === 'zip' || col === 'quantity' || col ==='warehouseID'
-                                    || col === 'role' || col === 'price' ? 'text-center' : 'text-start'} px-2 truncate mx-2`}
+                                className={`w-full ${
+                                    col === 'zip' ||
+                                    col === 'quantity' ||
+                                    col === 'warehouseID' ||
+                                    col === 'role' ||
+                                    col === 'price'
+                                        ? 'text-center'
+                                        : 'text-start'
+                                } px-2 truncate mx-2`}
                                 key={colIndex}
                             >
-                                {item[col]}
+                                {col === 'timestamp'
+                                    ? timestampFormatter(item[col])
+                                    : item[col]}
                             </p>
                         ))}
                     </div>

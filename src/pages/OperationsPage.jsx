@@ -33,6 +33,10 @@ const OperationsPage = () => {
         'productName',
         // 'productID',
     ];
+
+    const [selectedOperation, setSelectedOperation] = useState('');
+
+    console.log(selectedOperation);
     return (
         <div className='flex w-full h-full justify-evenly items-center relative overflow-hidden flex-wrap'>
             {/* Element for Inventory, Supplies and Sales */}
@@ -42,6 +46,7 @@ const OperationsPage = () => {
                 title={'Supply Orders'}
                 shouldReload={shouldReload}
                 setSelectedCategory={setSelectedCategory}
+                setSelectedOperation={setSelectedOperation}
             />
             <OrdersSuppliesStoreList
                 api={salesApi}
@@ -49,6 +54,7 @@ const OperationsPage = () => {
                 title={'Customer Sales'}
                 shouldReload={shouldReload}
                 setSelectedCategory={setSelectedCategory}
+                setSelectedOperation={setSelectedOperation}
             />
             <OrdersSuppliesStoreList
                 api={inventoryApi}
@@ -56,8 +62,13 @@ const OperationsPage = () => {
                 title={'Warehouse Stock'}
                 shouldReload={shouldReload}
                 setSelectedCategory={setSelectedCategory}
+                setSelectedOperation={setSelectedOperation}
             />
-            <div className='flex justify-center items-center w-[47%] h-'></div>
+            <div className='flex flex-col justify-center items-center w-[47%] h-[45%]'>
+                <h1 className='text-xl font-semibold'>New Supply Order</h1>
+                <h1 className='text-xl font-semibold'>New Customer Sale</h1>
+                <h1 className='text-xl font-semibold'>New Warehouse Stock</h1>
+            </div>
         </div>
     );
 };

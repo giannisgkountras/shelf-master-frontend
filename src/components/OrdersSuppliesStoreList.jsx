@@ -7,12 +7,16 @@ const OrdersSuppliesStoreList = ({
     title,
     shouldReload,
     setSelectedCategory,
+    setSelectedOperation,
 }) => {
     const [data, setdata] = useState([]);
     const [addNew, setAddNew] = useState(false);
 
     useEffect(() => {
         setSelectedCategory(columns);
+        if (addNew) {
+            setSelectedOperation(title);
+        }
     }, [addNew]);
 
     useEffect(() => {

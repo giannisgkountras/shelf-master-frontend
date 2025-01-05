@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Badge from './Badge';
 import { MdOutlineExpandLess, MdOutlineExpandMore } from 'react-icons/md';
-import {
-    notificationsData,
-    extraNotifications,
-} from '../data/NotificationData';
+import fetchNotificationsData from '../data/NotificationData';
 
 export const Notifications = () => {
-    const [notifications, setNotifications] = useState(notificationsData);
+    const [notifications, setNotifications] = useState([]);
+    const [extraNotifications, setExtraNotifications] = useState([]);
+    const [initialNotifications, setInitialNotifications] = useState([]);
+
+    useEffect(() => {
+        const fetchNotifications = async () => {
+            const {notificationsData, extraNotificationsData} = await fetchNotificationsData();
+            setNotifications(notificationsData);
+            setExtraNotifications(extraNotificationsData);
+            setInitialNotifications(notificationsData);
+        }
+
+        fetchNotifications();
+    }, []);
 
     return (
         <div className='w-full h-full overflow-y-auto flex flex-col justify-start items-start  scrollbar-thumb-third/20 scrollbar-track-third/10 scrollbar-thin'>
@@ -23,7 +33,7 @@ export const Notifications = () => {
                         </p>
                         <Badge
                             color={notification.color}
-                            text={notification.title}
+                            text={notification.employeeRole}
                         ></Badge>
                     </div>
                 </div>
@@ -44,7 +54,7 @@ export const Notifications = () => {
             {notifications.length > 5 && (
                 <button
                     className='bg-third/20 w-full rounded-md h-8 p-2 text-black flex justify-center items-center'
-                    onClick={() => setNotifications(notificationsData)}
+                    onClick={() => setNotifications(initialNotifications)}
                 >
                     Less <MdOutlineExpandLess className='text-xl' />
                 </button>

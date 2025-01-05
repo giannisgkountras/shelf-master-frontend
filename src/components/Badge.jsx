@@ -3,6 +3,7 @@ const Badge = ({ color = 'gray', text }) => {
         green: 'ring-green-300 bg-green-100',
         red: 'ring-red-300 bg-red-600/20',
         yellow: 'ring-yellow-400 bg-yellow-200',
+        softYellow: 'ring yellow-300 bg-yellow-100', 
         blue: 'ring-blue-700/10 bg-blue-700/20',
         pink: 'ring-pink-400 bg-pink-100',
         gray: 'ring-gray-500/10', // default case

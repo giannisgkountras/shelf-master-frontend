@@ -17,7 +17,6 @@ const OrdersSuppliesStoreList = ({
 
     useEffect(() => {
         api.getAll().then((response) => {
-            console.log(response);
             setdata(response);
         });
     }, [shouldReload]);
@@ -28,7 +27,7 @@ const OrdersSuppliesStoreList = ({
                 columns={columns}
                 rowsPerPage={6}
                 title={title}
-                setAddNew={setAddNew}
+                showAddNew={false}
             />
         </div>
     );

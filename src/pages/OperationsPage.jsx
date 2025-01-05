@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import OrdersSuppliesStoreList from '../components/OrdersSuppliesStoreList';
 import supplyApi from '../api/supplies';
 import inventoryApi from '../api/inventory';
 import salesApi from '../api/sales';
-import NewItem from '../components/NewItem';
+import NewOperations from '../components/NewOperations';
+import Alert from '../components/Alert';
+
 const OperationsPage = () => {
     const [shouldReload, setShouldReload] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState([]);
+    const [alertType, setAlertType] = useState('');
+    const [alertMessage, setAlertMessage] = useState('');
+
     const suppliesColumns = [
         // 'id',
         'timestamp',
@@ -33,6 +38,7 @@ const OperationsPage = () => {
         'productName',
         // 'productID',
     ];
+
     return (
         <div className='flex w-full h-full justify-evenly items-center relative overflow-hidden flex-wrap'>
             {/* Element for Inventory, Supplies and Sales */}
@@ -57,7 +63,14 @@ const OperationsPage = () => {
                 shouldReload={shouldReload}
                 setSelectedCategory={setSelectedCategory}
             />
-            <div className='flex justify-center items-center w-[47%] h-'></div>
+            <div className='flex flex-col justify-center items-center w-[47%] h-[45%]'>
+                <NewOperations
+                    setShouldReload={setShouldReload}
+                    setAlertType={setAlertType}
+                    setAlertMessage={setAlertMessage}
+                />
+            </div>
+            {alertType && <Alert type={alertType} message={alertMessage} />}
         </div>
     );
 };

@@ -4,6 +4,7 @@ import { MdAddCircle } from 'react-icons/md';
 import Loading from './Loading';
 import listColumnsRename from '../utils/listColumnsRename';
 import { FaSortUp, FaSortDown } from 'react-icons/fa';
+import timestampFormatter from '../utils/timestampFormatter';
 const List = ({
     data,
     columns,
@@ -13,6 +14,7 @@ const List = ({
     setSelected,
     add,
     setAddNew,
+    showAddNew = true,
 }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
@@ -82,16 +84,18 @@ const List = ({
                         onChange={(e) => setSearchQuery(e.target.value)}
                     ></input>
                 </div>
-                <button
-                    className='bg-primary w-fit text-nowrap flex justify-center items-center mr-2 h-10 rounded-full hover:bg-primary/80'
-                    onClick={() => {
-                        setAddNew(true);
-                        setSelected(null);
-                    }}
-                >
-                    <MdAddCircle className='text-xl mr-2' />
-                    Add new {add}
-                </button>
+                {showAddNew && (
+                    <button
+                        className='bg-primary w-fit text-nowrap flex justify-center items-center mr-2 h-10 rounded-full hover:bg-primary/80'
+                        onClick={() => {
+                            setAddNew(true);
+                            setSelected(null);
+                        }}
+                    >
+                        <MdAddCircle className='text-xl mr-2' />
+                        Add new {add}
+                    </button>
+                )}
             </div>
             <div className='flex justify-evenly items-center w-full border-b border-primary/20 h-10'>
                 {columns.map((col, index) => (
@@ -145,11 +149,20 @@ const List = ({
                     >
                         {columns.map((col, colIndex) => (
                             <p
-                                className={`w-full ${col === 'zip' || col === 'quantity' || col ==='warehouseID'
-                                    || col === 'role' || col === 'price' ? 'text-center' : 'text-start'} px-2 truncate mx-2`}
+                                className={`w-full ${
+                                    col === 'zip' ||
+                                    col === 'quantity' ||
+                                    col === 'warehouseID' ||
+                                    col === 'role' ||
+                                    col === 'price'
+                                        ? 'text-center'
+                                        : 'text-start'
+                                } px-2 truncate mx-2`}
                                 key={colIndex}
                             >
-                                {item[col]}
+                                {col === 'timestamp'
+                                    ? timestampFormatter(item[col])
+                                    : item[col]}
                             </p>
                         ))}
                     </div>

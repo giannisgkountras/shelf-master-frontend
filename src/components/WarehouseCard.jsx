@@ -27,17 +27,26 @@ const WarehouseCard = ({
                 </p>
                 <p className='text-black text-lg font-semibold'>ZIP: {zip}</p>
                 <p className='text-black text-lg font-semibold'>
-                    Capacity: {availableCapacity}/{capacity}
+                    Capacity: {(capacity - availableCapacity)}/{capacity}
                 </p>
-                <div className='w-4/5 bg-gray-200 rounded-full my-4'>
+                <div className='w-4/5 bg-gray-200 rounded-full my-4 relative'>
                     <div
-                        className='bg-[#518071] text-xs text-white text-center p-1 leading-none rounded-full'
+                        className='bg-[#518071] text-white text-center h-5 p-1  leading-none rounded-full'
                         style={{
-                            width: (availableCapacity / capacity) * 100 + '%',
+                            width: ((capacity - availableCapacity) / capacity) * 100 + '%',
+                        }}
+                    ></div>
+                    <p
+                        className='absolute top-0 text-sm right-[43%]'
+                        style={{
+                            color:
+                                (capacity - availableCapacity) / capacity > 0.5
+                                    ? '#fff'
+                                    : '#000',
                         }}
                     >
-                        {Math.round((availableCapacity / capacity) * 100) + '%'}
-                    </div>
+                        {Math.round(((capacity - availableCapacity) / capacity) * 100) + '%'}
+                    </p>
                 </div>
             </div>
         </div>

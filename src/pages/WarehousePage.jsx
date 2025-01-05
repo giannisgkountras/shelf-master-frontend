@@ -51,7 +51,7 @@ const WarehousePage = () => {
                             // Find the available capacity for the warehouse
                             availableCapacity={
                                 availableCapacities.find(
-                                    (item) => item?.warehouseID === warehouse.id
+                                    (item) => item.warehouseID === warehouse.id
                                 )?.available_capacity
                             }
                         />

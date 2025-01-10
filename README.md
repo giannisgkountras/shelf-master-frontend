@@ -21,13 +21,14 @@ npm install
 ```env
 VITE_API_BASE_URL=your-api-url
 ```
+The default url for the backend is `http://localhost:3000`
 
 ## Usage
 
 Run the development server:
 
 ```bash
-npm run dev
+npm start
 ```
 
 The application will be available at http://localhost:5173/ (default port).

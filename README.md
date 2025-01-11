@@ -12,7 +12,7 @@ To get started
 
 ```bash
 git clone <repository-url>
-cd project-directory
+cd shelf-master-frontend
 npm install
 ```
 
